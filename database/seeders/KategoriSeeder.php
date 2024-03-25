@@ -15,7 +15,7 @@ class KategoriSeeder extends Seeder
     {
         $data = [
             [
-                'kategori_id' => 9,
+                'kategori_id' => 8,
                 'kategori_kode' => 'MKR',
                 'kategori_nama' => 'Makanan Ringan',
             ],
