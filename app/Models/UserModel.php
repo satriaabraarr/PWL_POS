@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\LevelModel;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserModel extends Model
+class UserModel extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasFactory, AuthenticableTrait;
 
-    protected $table = 'm_user'; //mendefinisikan nama tabel yang digunakan oleh model ini
-    protected $primaryKey = 'user_id'; //mendefinisikan primary key dari tabel yang digunakan
+    protected $table = 'm_user'; // Mendefinisikan nama tabel yang digunakan oleh model ini
+    protected $primaryKey = 'user_id'; // Mendefinisikan primary key dari tabel yang digunakan
     /**
      * The attributes that are mass assignable
      * 
@@ -25,3 +26,4 @@ class UserModel extends Model
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
 }
+
