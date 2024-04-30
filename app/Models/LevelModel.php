@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LevelModel extends Model
 {
-    use HasFactory;
+    protected $table = 'm_level';
+    protected $primaryKey = 'level_id';
+    protected $fillable = ['level_kode', 'level_nama'];
 
-    protected $table = 'm_level'; // Sesuaikan dengan nama tabel level Anda
-    protected $primaryKey = 'level_id'; // Sesuaikan dengan nama primary key yang digunakan
-
-    // Define your relationships or other methods here
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class);
+    }
 }
